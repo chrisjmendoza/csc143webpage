@@ -1,0 +1,592 @@
+<!doctype html>
+<html>
+    <head>
+        <title>CSC143 - Calendar</title>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <link href="css/style.css" type="text/css" rel=stylesheet />
+        <link href="css/nav.css" type="text/css" rel="stylesheet" />
+        <link href="css/calendar.css" type="text/css" rel="stylesheet" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="js/script.js"></script>
+        <script>function clickNGo(menuObj)
+            {//drop down menu
+                var i = menuObj.selectedIndex;
+                if(i > 0){window.location = menuObj.options[i].value;}
+            }</script>
+    </head>
+
+    <body>
+
+        <header id="top">
+            <a href="http://www.java.com/en/"><img id="logo" src="images/iconjava.gif" alt="Java" title="Java Homepage" height="62"/></a>
+            <h1><a href="index.html">CSC143 - Java II</a></h1>
+            <p class="header">Computer Programming for Engineers and Scientists</p>
+
+            <nav id='cssmenu'>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class='active'><a href='#'>Class Resources</a>
+                        <ul>
+                            <li class='active'><a href="#">Calendar</a></li>
+                            <li><a href="classnotes.html">Class Notes</a></li>
+                            <li><a href="hw.html">Homework</a>
+                                <ul>
+                                    <li><a href="hw/hw1.html">Homework 1</a></li>
+                                    <li><a href="hw/hw2.html">Homework 2</a></li>
+                                    <li><a href="hw/hw3.html">Homework 3</a></li>
+                                    <li><a href="hw/hw4.html">Homework 4</a></li>
+                                    <li><a href="hw/hw5.html">Homework 5</a></li>
+                                    <li><a href="hw/hw6.html">Homework 6</a></li>
+                                    <li><a href="hw/hw7.html">Homework 7</a></li>
+                                    <li><a href="hw/hw7ExtraCredit.html">Homework 7 - Extra Credit</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="syllabus.html">Syllabus</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="resources.html">Resources</a></li>
+
+                    <li><a href="feedback.php">Feedback</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <hr>
+        <h2>Class Calendar</h2>
+        <hr>
+        <p class="center">The calendar is updated as we move through the quarter (<strong>don't trust</strong> what is written beyond the current week).</p>
+
+        <!-- The header and select menu to jump around the calendar weeks. The javascript for this is locatied in the head above -->
+        <h3 class="weekselect">Select the week you want to see:</h3>
+        <select onchange="javascript:clickNGo(this)">
+            <option value="#week1">Week 1</option>
+            <option value="#week2">Week 2</option>
+            <option value="#week3">Week 3</option>
+            <option value="#week4">Week 4</option>
+            <option value="#week5">Week 5</option>
+            <option value="#week6">Week 6</option>
+            <option value="#week7">Week 7</option>
+            <option value="#week8">Week 8</option>
+            <option value="#week9">Week 9</option>
+            <option value="#week10">Week 10</option>
+            <option value="#week11">Week 11</option>
+        </select>
+        <!-- END OF WEEK SELECT MENU -->
+
+
+        <!-- BEGIN THE CALENDAR TABLE -->
+
+        <!-- The first row of the table lists the days of the week -->
+        <table class="calendar">
+            <tr class="days">
+                <td></td>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+                <td>Thursday</td>
+                <td>Friday</td>
+            </tr>
+
+            <!-- START Week 1 information -->
+            <tr>
+                <th id="week1">Week 1<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">Jun 6</p>
+                    <br>
+                    Welcome: What to expect in this class.
+                    <br>
+                    <br>
+                    Inheritance
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/Person.java">Person</a>, <a href="repository/ClassExamples/Student.java">Student</a>, <a href="repository/ClassExamples/PersonStudentTest.java">PersonStudentTest</a></td>
+                <td><p class="date">Apr 7</p>
+                    <br>
+                    <a href="labs/Lab1.html">Lab 1:</a>
+                    <br>
+                    Interfaces, abstract classes, unit testing.
+                </td>
+                <td><p class="date">Apr 8</p>
+                    <br>
+                    <a href="labs/Lab1.html">Lab 1:</a>
+                    <br>
+                    Interfaces, abstract classes, unit testing.
+                    <br>
+                    <br>
+                    PracticeIt example: <a href="repository/ClassExamples/DiscountBill.java">DiscountBill</a>
+                </td>
+                <td><p class="date">Apr 9</p>
+                    <br>
+                    Inheritance
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/Critter.java">Critter</a>, <a href="repository/ClassExamples/Cow.java">Cow</a>, <a href="repository/ClassExamples/Buffalo.java">Buffalo</a>, <a href="repository/ClassExamples/Bovine.java">Bovine</a>, <a href="repository/ClassExamples/Poodle.java">Poodle</a>, <a href="repository/ClassExamples/Trainable.java">Trainable</a>, <a href="repository/ClassExamples/Sellable.java">Sellable</a>, <a href="repository/ClassExamples/TestCritter.java">TestCritter</a>
+                </td>
+                <td><p class="date">Apr 10</p>
+                    <br>
+                    Equals (slides: <a href="repository/slides/ppt/CSC142NN.ppt">ppt</a>, <a href="repository/slides/pdf/CSC142NN.pdf">pdf</a>)
+                </td>
+            </tr>
+            <!-- END Week 1 Information -->
+
+            <!-- START Week 2 information -->
+            <tr>
+                <th id="week2">Week 2<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">Apr 13</p>
+                    <br>
+                    Clone:
+                    <br>
+                    deep copy vs shallow copy
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/EqualsAndClone/Car.java">Car</a>, <a href="repository/ClassExamples/EqualsAndClone/CarTest.java">CarTest</a>, <a href="repository/ClassExamples/EqualsAndClone/FancyCar.java">FancyCar</a>, <a href="repository/ClassExamples/EqualsAndClone/Person.java">Person</a>
+                </td>
+                <td><p class="date">Apr 14</p>
+                    <br>
+                    Swing:
+                    <br>
+                    <a href="repository/ClassExamples/FirstSwingApplication.java">FirstSwingApplication</a>, <a href="repository/ClassExamples/MyPanel.java">MyPanel</a>, <a href="repository/ClassExamples/ButtonListener.java">ButtonListener</a>
+                    <br>
+                    <br>
+                    Lab 2:
+                    <br>
+                    <br>
+                    Swing, generics, events
+                    <br>
+                    <br>
+                    <a href="repository/GenericsTutorials.pdf">generics tutorial</a></td>
+                <td><p class="date">Apr 15</p>
+                    <br>
+                    <a href="labs/Lab2.html">Lab 2:</a>
+                    <br>
+                    <br>
+                    Swing, generics, events
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/ArrayListExampleWithSwing.java">ArrayListExampleWithSwing</a>
+                </td>
+                <td><p class="date">Apr 16</p>
+                    <br>
+                    Events
+                    <br>
+                    <br>
+                    <div class="red">Quiz #1</div>
+                    <br>
+                    <div class="green">HW#1 due</div>
+                    <br>
+                    Hw1 help: <a href="repository/ClassExamples/Hw1Help/CritterInfoForTest.java">CritterInfoForTest</a>, <a href="repository/ClassExamples/Hw1Help/TestCritters.java">TestCritters</a>
+                </td>
+                <td><p class="date">Apr 17</p>
+                    <br>
+                    Model, View, Controller (MVC)
+                </td>
+            </tr>
+            <!-- END Week 2 Information -->
+
+            <!-- START Week 3 information -->
+            <tr>
+                <th id="week3">Week 3<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">Apr 20</p>
+                    <br>
+                    MVC (<a href="http://flepeint.ccfaculty.org/cgi-bin/java143/viewSolt.cgi?fileName=MVCBookChapter.pdf">notes</a>)
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/MVC/MainClass.java">MainClass</a>, <a href="repository/ClassExamples/MVC/PolygonModel.java">PolygonModel</a>, <a href="repository/ClassExamples/MVC/PolygonController.java">PolygonController</a>, <a href="repository/ClassExamples/MVC/View.java">View</a>, <a href="repository/ClassExamples/MVC/MyPanel.java">MyPanel</a>
+                    <br>
+                    <br>
+                    Another example:
+                    <br><a href="repository/ClassExamples/View.java">View</a>, <a href="repository/ClassExamples/ModelOfSquares.java">ModelOfSquares</a>, <a href="repository/ClassExamples/MyRectangle.java">MyRectangle</a>, <a href="repository/ClassExamples/SquaresController.java">SquaresController</a>, <a href="repository/ClassExamples/MainClass.java">MainClass</a>, <a href="repository/ClassExamples/PanelOfSquares.java">PanelOfSquares</a>, <a href="repository/ClassExamples/ConsoleView.java">ConsoleView</a>
+                </td>
+                <td><p class="date">Apr 21</p>
+                    <br>
+                    <a href="labs/Lab3.html">Lab 3:</a>
+                    <br>
+                    <br>
+                    MVC, recursion,
+                    <br>
+                    <br>
+                    MVC example:
+                    <br>
+                    <br>
+                    without MVC: <a href="repository/ClassExamples/Face.java">Face</a>, <a href="repository/ClassExamples/FaceTest.java">FaceTest</a>
+                </td>
+                <td><p class="date">Apr 22</p>
+                    <br>
+                    <a href="labs/Lab3.html">Lab 3:</a>
+                    <br>
+                    <br>
+                    MVC, recursion,
+                    <br>
+                    <br>
+                    MVC example:
+                    <br>
+                    <br>
+                    With MVC: <a href="repository/ClassExamples/MVCFace/Face.java">Face</a>, <a href="repository/ClassExamples/MVCFace/FaceModel.java">FaceModel</a>, <a href="repository/ClassExamples/MVCFace/FaceTest.java">FaceTest</a>, <a href="repository/ClassExamples/MVCFace/FaceView.java">FaceView</a>, <a href="repository/ClassExamples/MVCFace/TextView.java">TextView</a>
+                </td>
+                <td><p class="date">Apr 23</p>
+                    <br>
+                    Recursion
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/RecursionExamples.java">RecursionExamples</a>
+                    <br>
+                    <br>
+                    Recursive data structure: <a href="repository/ClassExamples/Box.java">Box</a>, <a href="repository/ClassExamples/BoxViewer.java">BoxViewer</a>
+                </td>
+                <td><p class="date">Apr 24</p>
+                    <br>
+                    Exceptions
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/UsingExceptions.java">UsingExceptions</a>
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/UsingCheckedExceptions.java">UsingCheckedExceptions</a>, <a href="repository/ClassExamples/BadInputException.java">BadInputException</a>, <a href="repository/ClassExamples/ExampleWithFinally.java">ExampleWithFinally</a>
+                    <br>
+                    <br>
+                    <div class="red">Quiz #2</div>
+                    <br>
+                    <div class="red">Make-up 1-2:40 pm - SAM 202:</div> Exceptions, streams, <a href="repository/notes/classNotes5_24.pdf">notes</a>
+                    <br>
+                    <br>
+                    <a href="repository/exercises/ExceptionExercises.doc">exercises</a>
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/ExceptionExercises.java">ExceptionExercises</a>
+                </td>
+            </tr>
+            <!-- END Week 3 Information -->
+
+            <!-- START Week 4 information -->
+            <tr>
+                <th id="week4">Week 4<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">Apr 27</p>
+                    <br>
+                    <a href="labs/Lab4.html">Lab 4:</a>
+                    <br>
+                    <br>
+                    Streams
+                    <br>
+                    <br>
+                    See <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/language/assert.html">assertions</a> on the sun web site</td>
+                <td><p class="date">Apr 28</p>
+                    <br>
+                    <a href="labs/Lab4.html">Lab 4:</a>
+                    <br>
+                    <br>
+                    Streams
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/UsingFiles.java">UsingFiles</a>, <a href="repository/ClassExamples/DownloadFile.java">DownloadFile</a>, <a href="repository/ClassExamples/FileCopy.java">FileCopy</a>, <a href="repository/ClassExamples/StreamsAndRecursion.java">StreamsAndRecursion</a>
+                </td>
+                <td><p class="date">Apr 29</p>
+                    <br>
+                    Collections: <a href="repository/ClassExamples/IntroToCollections.java">IntroToCollections</a>, <a href="repository/ClassExamples/HashMapExample.java">HashMapExample</a>
+                    <br>
+                    <br>
+                    <a href="repository/DataDrivenPrograms.doc">Data driven programs</a>
+                </td>
+                <td><p class="date">Apr 30</p>
+                    <br>
+                    <a href="labs/Lab5.html">Lab 5:</a> Teaching Machine
+                    <br>
+                    <br>
+                    <div class="green">HW#2 due</div>
+                </td>
+                <td><p class="date">May 1</p>
+                    <br>
+                    Teaching Machine
+                    <br>
+                    <br>
+                    <a href="repository/JavaReview.txt">JavaReview.txt</a>, <a href="repository/ClassExamples/TeachingMachine/TMQuestion.java">TMQuestion</a>, <a href="repository/ClassExamples/TeachingMachine/TMCourse.java">TMCourse</a>, <a href="repository/ClassExamples/TeachingMachine/TMMain.java">TMMain</a>
+                </td>
+            </tr>
+            <!-- END Week 4 Information -->
+
+            <!-- START Week 5 information -->
+            <tr>
+                <th id="week5">Week 5<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">May 4</p>
+                    <br>
+                    <div class="red">No class</div>
+                </td>
+                <td><p class="date">May 5</p>
+                    <br>
+                    <div class="red">No class</div>
+                </td>
+                <td><p class="date">May 6</p>
+                    <br>
+                    <div class="red">No class</div>
+                </td>
+                <td><p class="date">May 7</p>
+                    <br>
+                    Exam review: <a href="repository/ClassExamples/Container.java">Container</a>, <a href="repository/ClassExamples/ContainerUser.java">ContainerUser</a>, PracticeIt <a href="repository/ClassExamples/PracticeItWriteSquares.java">example</a>
+                    <br>
+                    <br>
+                    CodingBat: <a href="repository/ClassExamples/CodingBatRecursion.java">recursion</a>
+                </td>
+                <td><p class="date">May 8</p>
+                    <br>
+                    Array list, linked list
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/MyArrayList.java">MyArrayList</a>, <a href="repository/ClassExamples/MyLinkedList.java">MyLinkedList</a>, <a href="repository/ClassExamples/MyList.java">MyList</a>, <a href="repository/ClassExamples/TestMyList.java">TestMyList</a>
+                </td>
+            </tr>
+            <!-- END Week 5 Information -->
+
+            <!-- START Week 6 information -->
+            <tr>
+                <th id="week6">Week 6<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">May 11</p>
+                    <br>
+                    <div class="red">Exam 1</div>
+                    <br>
+                    <a href="repository/exam/ex1practiceSample.pdf">Sample</a>, <a href="repository/exam/ex1practiceSolution.pdf">Solution</a>
+                </td>
+                <td><p class="date">May 12</p>
+                    <br>
+                    <a href="labs/Lab6.html">Lab 6:</a>
+                    <br>
+                    <br>
+                    Collections: ArrayList, LinkedList
+                </td>
+                <td><p class="date">May 13</p>
+                    <br>
+                    <a href="labs/Lab6.html">Lab 6:</a>
+                    <br>
+                    <br>
+                    Collections: ArrayList, LinkedList
+                    <br>
+                    <br>
+                    <div class="green">HW#3 due</div>
+                    <br>
+                    Hw3 help: <a href="repository/ClassExamples/Hw3Help/AbstractShape.java">AbstractShape</a>
+                </td>
+                <td><p class="date">May 14</p>
+                    <br>
+                    Linked lists
+                </td>
+                <td><p class="date">May 15</p>
+                    <br>
+                    Linked lists
+                </td>
+            </tr>
+            <!-- END Week 6 Information -->
+
+            <!-- START Week 7 information -->
+            <tr>
+                <th id="week7">Week 7<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">May 18</p>
+                    <br>
+                    Linked lists, complexity
+                </td>
+                <td><p class="date">May 19</p>
+                    <br>
+                    Complexity (<a href="http://flepeint.ccfaculty.org/cgi-bin/java143/viewSolt.cgi?fileName=BigOBookChapter.pdf">notes</a>), <a href="repository/ClassExamples/BigO.java">examples</a>, <a href="repository/ClassExamples/BigOSolution.java">solution</a>
+                </td>
+                <td><p class="date">May 20</p>
+                    <br>
+                    <a href="labs/Lab7.html">Lab 7</a>
+                    <br>
+                    <br>
+                    2's complement, sorting
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/TwosComplement.java">TwosComplement</a>
+                </td>
+                <td><p class="date">May 21</p>
+                    <br>
+                    <a href="labs/Lab7.html">Lab 7</a>
+                    <br>
+                    <br>
+                    2's complement (notes: <a href="repository/slides/ppt/TwosComplement.pptx">pptx</a>, <a href="repository/slides/pdf/TwosComplement.pdf">pdf</a>)
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/Binary.java">Binary</a>
+                    <br>
+                    <br>
+                    <div class="red">Quiz #3</div>
+                </td>
+                <td><p class="date">May 22</p>
+                    <br>
+                    Searching
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/BinarySearch.java">BinarySearch</a>
+                </td>
+            </tr>
+            <!-- END Week 7 Information -->
+
+            <!-- START Week 8 information -->
+            <tr>
+                <th id="week8">Week 8<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">May 25</p>
+                    <br>
+                    <div class="red">Memorial Day</div>
+                </td>
+                <td><p class="date">May 26</p>
+                    <br>
+                    <a href="labs/Lab8.html">Lab 8:</a> Stacks (see&nbsp;lab&nbsp;9), sorting
+                </td>
+                <td><p class="date">May 27</p>
+                    <br>
+                    <a href="labs/Lab8.html">Lab 8:</a> Stacks (see lab 9), sorting
+                </td>
+                <td><p class="date">May 28</p>
+                    <br>
+                    Sorting, quick sort, merge sort
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/SortingAlgorithms.java">Sorting</a>
+                    <br>
+                    <br>
+                    <div class="green">HW#4 due</div>
+                    <br>
+                    Hw4 help: <a href="repository/ClassExamples/Hw4Help/Adventure.java">Adventure</a>
+                </td>
+                <td><p class="date">May 29</p>
+                    <br>
+                    Sorting: <a href="http://www.sorting-algorithms.com/">neat animations</a>
+                    <br>
+                    <br>
+                    Exam review: <a href="repository/exam/Exam2Practice.java">program example</a>
+                </td>
+            </tr>
+            <!-- END Week 8 Information -->
+
+            <!-- START Week 9 information -->
+            <tr>
+                <th id="week9">Week 9<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">June 1</p>
+                    <br>
+                    Sorting, exam review
+                </td>
+                <td><p class="date">June 2</p>
+                    <br>
+                    <a href="labs/Lab9.html">Lab 9:</a>
+                    <br>
+                    <br>
+                    Stacks
+                    <br>
+                    <br>
+                    <div class="red">Quiz #4</div>
+                </td>
+                <td><p class="date">June 3</p>
+                    <br>
+                    <a href="labs/Lab9.html">Lab 9:</a>
+                    <br>
+                    <br>
+                    Stacks
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/Stack.java">Stack</a>, <a href="repository/ClassExamples/EmptyStackException.java">EmptyStackException</a>, <a href="repository/ClassExamples/PostfixInfixCalculator.java">PostfixInfixCalculator</a>, <a href="repository/ClassExamples/ExpressionFormatException.java">ExpressionFormatException</a>
+                </td>
+                <td><p class="date">June 4</p>
+                    <br>
+                    Stacks and queues, applications
+                </td>
+                <td><p class="date">June 5</p>
+                    <br>
+                    <div class="red">Exam 2</div>
+                    <br>
+                    <a href="repository/exam/ex2practiceSample.pdf">Sample</a>, <a href="repository/exam/ex2practiceSolution.pdf">Solution</a>
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/BigO.java">BigO</a> examples
+                    <br>
+                    <br>
+                    <div class="green">HW#5 due 6/6</div>
+                    <br>
+                    Hw5 help: <a href="repository/ClassExamples/Hw5Help/BigInt.java">BigInt</a>
+                </td>
+            </tr>
+            <!-- END Week 9 Information -->
+
+            <!-- START Week 10 information -->
+            <tr>
+                <th id="week10">Week 10<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">Jun 8</p>
+                    <br>
+                    Recursive backtracking
+                </td>
+                <td><p class="date">Jun 9</p>
+                    <br>
+                    Binary search trees
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/BSTree.java">BSTree</a>
+                    <br>
+                    <br>
+                    <a href="labs/Lab10.html">Lab 10:</a>
+                    <br>
+                    <br>
+                    Hash set
+                </td>
+                <td><p class="date">Jun 10</p>
+                    <br>
+                    <a href="labs/Lab10.html">Lab 10:</a>
+                    <br>
+                    <br>
+                    Hash set
+                </td>
+                <td><p class="date">Jun 11</p>
+                    <br>
+                    Trees applications, hashing, Hash set
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/TreeExample.html">Tree question</a>, <a href="repository/ClassExamples/Tree.java">Solution</a>
+                    <br>
+                    <br>
+                    <a href="repository/ClassExamples/heap.html">Heap</a>
+                </td>
+                <td><p class="date">Jun 12</p>
+                    <br>
+                    Hash set (<a href="repository/ClassExamples/HashAndPrimeNumber.java">why a prime number?</a>)
+                    <br>
+                    <br>
+                    <div class="green">HW#6 due</div>
+                </td>
+            </tr>
+            <!-- END Week 10 Information -->
+
+            <!-- START Week 11 information -->
+            <tr>
+                <th id="week11">Week 11<br><a href="#top">Back to the top</a></th>
+                <td><p class="date">Jun 15</p>
+                    <br>
+                    Grammars, <a href="repository/ClassExamples/Language.java">Language</a>
+                    <br>
+                    <br>
+                    <div class="red">Quiz #5</div>
+                </td>
+                <td><p class="date">Jun 16</p>
+                    <br>
+                    Review
+                </td>
+                <th colspan="3"><p class="date">Wednesday, June 17: 10:30 am - 12:30 pm</p>
+                    <div class="red">Final</div>
+                    <a href="http://seattlecentral.edu/~flepeint/java143/143sp15Web.pdf">Grades</a> <p>(if you gave me a web code on your final)</p>
+                    <div class="green">HW#7 due</div>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="6" class="goodbye">HAPPY SUMMER TO ALL!</th>
+            </tr>
+            <!-- END Week 11 Information -->
+        </table>
+        <!-- END CALENDAR TABLE -->
+
+        <footer>
+            <small>
+                &copy; 2015, All Rights Reserved ~ Seattle Central College ~
+                <a href="http://validator.w3.org/check/referer" target="_blank">Valid&nbsp;HTML</a> ~
+                <a href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">Valid&nbsp;CSS</a> ~ Authored by <a href="http://www.cjinseattle.com">Chris Mendoza</a> ~ <a href="disclaimer.html">Disclaimer</a>
+            </small>
+        </footer>
+    </body>
+</html>

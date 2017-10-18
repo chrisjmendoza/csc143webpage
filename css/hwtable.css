@@ -1,0 +1,24 @@
+td {
+    BORDER-RIGHT: windowtext 1pt solid;
+    PADDING-RIGHT: 5.4pt;
+    BORDER-TOP: windowtext 1pt solid;
+    PADDING-LEFT: 5.4pt;
+    PADDING-BOTTOM: 0in;
+    BORDER-LEFT: windowtext 1pt solid;
+    WIDTH: 156.1pt;
+    PADDING-TOP: 0in;
+    BORDER-BOTTOM: windowtext 1pt solid;
+}
+
+td.MsoNormalTable {
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    MARGIN-LEFT: -18.45pt;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none;
+    BORDER-COLLAPSE: collapse;
+}
+
+p.MsoHeader {
+    MARGIN: 3pt 0in;
+}

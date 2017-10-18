@@ -1,0 +1,98 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<!-- Mirrored from seattlecentral.edu/faculty/flepeint/java143/ClassExamples/heap.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2015 00:09:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+   <title>CSC143 Homework 7</title>
+</head>
+<body bgcolor="#FFFFFF">
+<p>
+<p><hr WIDTH="100%">
+<h3>
+ Heap Question</h3>A complete binary tree of height h&nbsp; has all the levels filled through
+level h-1, and the leaves on level h are filled left to right.
+<br>In other words,
+<p>&nbsp;&nbsp; 1. All nodes at level h-2 and above have 2 children each,
+and
+<br>&nbsp;&nbsp; 2.When a node at level h-1 has children, all nodes to
+its left at the same level have 2 children each, and
+<br>&nbsp;&nbsp; 3.When a node at level h-1 has one child, it is a left
+child
+<p>A heap is a complete binary tree with the following recursive definition:
+<br>&nbsp;&nbsp;&nbsp; 1) empty
+<br>OR
+<br>&nbsp;&nbsp;&nbsp; 2) whose root contains a search key greater than
+or equal to the search key in each of its children, AND
+<br>&nbsp;&nbsp;&nbsp; 3) whose subtrees are also heaps
+<p>For example,&nbsp; this tree is a heap:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+This tree is not a heap.&nbsp; Notice the subtree starting at 50:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<font color="#FF0000">50&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">&nbsp;&nbsp;
+60
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp; \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/&nbsp;&nbsp;&nbsp; \&nbsp;&nbsp;&nbsp;&nbsp; /
+<br>&nbsp;&nbsp;&nbsp; 50&nbsp;&nbsp;&nbsp; 40&nbsp;&nbsp; 80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+55&nbsp;&nbsp; 45&nbsp; 35
+<br>&nbsp;&nbsp; /&nbsp; \
+<br>&nbsp;9&nbsp;&nbsp;&nbsp; 2
+<h4>
+Part 1</h4>The idea behind inserting into a heap is
+<br>&nbsp;&nbsp;&nbsp; 1) Create a new node at level h ( in the appropriate
+spot) and store the new value there.&nbsp; Note that&nbsp; now you no longer
+have a heap.
+<br>&nbsp;&nbsp;&nbsp; 2) Then,&nbsp; compare&nbsp; this value with the
+value of its parent.&nbsp; Swap values if out of order.
+<br>&nbsp;&nbsp;&nbsp; 3) Repeat this "bubble up" process until you have
+a heap again.
+<p>Draw a picture of the heap created by inserting the following data :&nbsp;&nbsp;
+10&nbsp; 5&nbsp; 8&nbsp; 15&nbsp; 3&nbsp; 12&nbsp; 14&nbsp; 20&nbsp;&nbsp;
+9
+<h4>
+Part 2</h4>A very useful implementation for a heap is an array.&nbsp; The root is
+stored at index 0,&nbsp; and its children are stored at index 1 and 2.&nbsp;
+For any node at index i,&nbsp; its left
+<br>child is at index [2*i&nbsp; + 1]&nbsp; and its right child is at index
+[2*i + 2] ( note that this even works for the root).&nbsp;&nbsp; A size
+variable would hold how much data is in the array.
+<p>Draw what the array would look like for the heap you drew above.
+<h4>
+Part 3</h4>Implement the method public void heapInsert(Object o) to insert a piece
+of data into our heap based on the algorithm above.
+<p>Assumptions:
+<br>&nbsp;&nbsp;&nbsp; 1)&nbsp; Assume that the objects in the heap support
+the method compareTo().
+<br>&nbsp;&nbsp;&nbsp; 2)&nbsp; The Heap class has instance variables size
+and Object[] items.
+<br>&nbsp;&nbsp;&nbsp; 3)&nbsp; Assume there is a method ensureCapacity()&nbsp;
+just like we had for our SimpleArrayList class.
+<p>Hint:&nbsp; If you have the index of a node ( e.g.&nbsp;&nbsp; index
+i ),&nbsp; the index of the parent is [ (i - 1) / 2].
+<HR WIDTH="100%">
+<H3>
+Language Question</H3>Consider the problem of recognizing whether a particular string is in the
+language L
+<P>&nbsp;&nbsp;&nbsp; L = { w$w' |&nbsp; w is a possibly empty string of
+characters other than $,&nbsp; w' = reverse(w) }
+<P>For example, the strings "a$a",&nbsp;&nbsp; "$",&nbsp; and <FONT COLOR="#000000">"abc$cba"<FONT COLOR="#1822CD"> 
+  are in L,&nbsp; but "Ab$Ab", "xw$WX" , and "abc$cb" are not. 
+<P>1) Write a method that is passed in a string and returns true or false
+based on whether the argument is in this language.&nbsp; Use a Stack to
+solve the problem.
+<P>2) Solve the same problem recursively, without a stack.
+<P>
+<HR WIDTH="100%">
+</body>
+
+<!-- Mirrored from seattlecentral.edu/faculty/flepeint/java143/ClassExamples/heap.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2015 00:09:40 GMT -->
+</html>

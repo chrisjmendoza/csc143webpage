@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>CSC143 - HW1</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link href="../css/style.css" type="text/css" rel=stylesheet />
+    <link href="../css/nav.css" type="text/css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="http://www.java.com/en/"><img id="logo" src="../images/iconjava.gif" alt="Java" title="Java Homepage" height="62" /></a>
+        <h1><a href="../index.html">CSC143 - Java II</a></h1>
+        <p class="header">Computer Programming for Engineers and Scientists</p>
+
+        <nav id='cssmenu'>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li class="active"><a href='#'>Class Resources</a>
+                    <ul>
+                        <li><a href="../calendar.html">Calendar</a></li>
+                        <li><a href="../classnotes.html">Class Notes</a></li>
+                        <li class="active"><a href="../hw.html">Homework</a>
+                            <ul>
+                                <li><a href="hw1.html">Homework 1</a></li>
+                                <li><a href="hw2.html">Homework 2</a></li>
+                                <li><a href="hw3.html">Homework 3</a></li>
+                                <li><a href="hw4.html">Homework 4</a></li>
+                                <li><a href="hw5.html">Homework 5</a></li>
+                                <li><a href="hw6.html">Homework 6</a></li>
+                                <li class="active"><a href="hw7.html">Homework 7</a></li>
+                                <li><a href="hw7ExtraCredit.html">Homework 7 - Extra Credit</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../programs.html">Programs</a></li>
+                        <li><a href="../syllabus.html">Syllabus</a></li>
+                    </ul>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../help.html">Help</a></li>
+                    <li><a href="../feedback.php">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="Section1">
+        <h2>Programming Assignment #7</h2>
+        <h2>(from the UW)</h2>
+        <p>20 points</p>
+        <p>This program will give you practice with binary trees and priority queues. In this program you will explore how text files can be compressed by using a coding scheme based on the frequency of characters. We will use a coding scheme called Huffman coding. The basic idea is to abandon the way that text files are usually stored. Instead of using the usual seven or eight bits per character, Huffman's method uses only a few bits for characters that are used often, more bits for those that are rarely used.</p>
+
+        <p>You will solve this problem using a structure known as a priority queue. In a priority queue each value inserted into the queue has a priority that determines when it will be removed. There are many ways to specify the priorities. For this program you will construct objects that implement the Comparable interface, with objects that are less being given a higher priority (to be removed first).
+
+
+        </p>
+        <p>The first step is to compute the frequency of each character in the file you wish to encode. This allows you to determine which characters should have the fewest bits, etc. The next step is to build a coding tree from the bottom up according to the frequencies. An example will help make this clear. To make the example easier, suppose we only want to encode the five letters (a, b, c, d, e) and they have frequencies 3, 3, 1, 1, and 2, respectively.
+
+
+        </p>
+        <p>We first create a leaf node for each character/frequency pair and put them into a priority queue, so that the characters with lower frequencies appear first:</p>
+
+        <img src="../images/hw7/1.png">
+
+        <p>Now we pick the two nodes with the smallest frequencies (the two at the front of the priority queue) and create a new node with those two nodes as children (the first value from the queue becomes the left, the second value from the queue becomes the right). We assign this new branch node a frequency that is the sum of the frequencies of the two children. This new node is then put back into the priority queue:
+
+            <img src="../images/hw7/2.png">
+
+            <p>Continuing in this way, we build up larger and larger subtrees.</p>
+            <p>Here are the rest of the steps: </p>
+
+            <img src="../images/hw7/3.png">
+
+            <hr>
+
+            <img src="../images/hw7/4.png">
+
+            <hr>
+
+            <img src="../images/hw7/5.png">
+
+            <p>Note that the nodes with low frequencies end up far down in the tree, and nodes with high frequencies end up near the root of the tree. It turns out that this structural description is exactly what is needed to create an efficient encoding. The Huffman code is derived from this coding tree simply by assigning a zero to each left branch and a one to each right branch. The code can be read directly from the tree. The code for a is 10, the code for b is 11, the code for c is 010, the code for d is 011 and the code for e is 00.
+
+
+            </p>
+            <p>An interesting feature of the Huffman code is that delimiters between characters are not stored, even though different characters may be coded with different numbers of bits. The key is that a code created by this method exhibits what is known as the prefix property, which means that no code for a character is the prefix of the code of any other character. Thus, to decode a message we need only traverse our tree. When we reach a leaf, we know that we have decoded one character, and can now start decoding the next character.
+
+
+            </p>
+            <p>Part 1: Making a Code</p>
+            <p>For our purposes, we will encode what are known as bytes (1 byte = 8 bits). This will allow us to encode standard text files that use ASCII and binary files as well. From the point of view of your Huffman code, you can think about the individual bytes as simple integers in the range of 0 to 255, each representing the ASCII value of a particular character. In part 1, you are working with a program called MakeCode. It prompts the user for a file to examine and it computes the frequency of each character in the file. These counts are passed as an array to your HuffmanTree constructor.
+
+
+            </p>
+            <p>The array passed to your constructor will have exactly 256 values in it, but your program should not depend on this. Instead, you can use the length field of the array to know how many there are. In your constructor, you should use a priority queue to build up the tree as described above. First you will add a leaf node for each character that has a frequency greater than 0 (we don?t include the other characters in our tree). These should be added in increasing character order (character 0, character 1, and so on).
+
+
+            </p>
+            <p>Then you build the tree. Initially you have a bunch of leaf nodes. Your goal is to get a single tree. While you haven?t gotten down to a single tree, you remove two values from the priority queue and combine them to make a new branch node which you put back into the queue, as described above. You continue combining subtrees until you get down to one tree. This becomes your Huffman tree.
+
+
+            </p>
+            <p>You are to define a class called HuffmanTree with the following public methods (more methods will be added in part 2 of this assignment):</p>
+            <div align="center">
+                <table class="MsoNormalTable">
+                    <tbody>
+                        <tr
+                            <td width="208">
+                                <p>Method</p>
+                            </td>
+                            <td width="317">
+                                <p>Description</p>
+                            </td>
+                        </tr>
+                        <tr style="mso-yfti-irow: 1">
+                            <td width="208">
+                                <p>HuffmanTree(int[] count)</p>
+                            </td>
+                            <td>
+                                <p class="MsoHeader">Constructs a Huffman tree using the given array of frequencies where count[i] is the number of occurrences of the character with ASCII value i.</p>
+                            </td>
+                        </tr>
+                        <tr
+                            <td width="208">
+                                <p>void write(PrintStream output)
+                                </p>
+                            </td>
+                            <td>
+                                <p>Writes the current tree to the given output stream in standard format.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>In defining your class, you will also define a node class called HuffmanNode. You may decide what data fields to include with this class.
+
+
+            </p>
+            <p>In writing the tree, you should produce two lines of output for each character. The first line should have the ASCII value of the character. The second line should have the code (0's and 1's) for the character with this ASCII value. For the simple example above, the output would be (the letter a has ASCII value 97):
+
+
+            </p>
+
+            <p>The codes should be written in traversal order. In other words, they should be written in the order that any standard traversal of the tree would visit them.
+
+
+            </p>
+            <p>It turns out that Huffman coding works best if one character is designated as end of file, meaning that every file is guaranteed to end with such a character and it will be used for no other purpose. Some operating systems have such a character, but if we want to write a general-purpose program, we have to do something that is not specific to any one operating system. So in addition to encoding the actual characters that appear in the file, we will create a code for a fictitious end-of-file character that will be used only by the Huffman encoding and decoding programs. That means that in addition to all of the legal characters, you are also going to introduce a special character that will be used to signal end-of-file. We will refer to this as the ?pseudo-eof? character. Its value will be one higher than the value of the highest character in the frequency array passed to the constructor. It will always have a frequency of 1 because it appears exactly once at the end of each file to be encoded. You will have to manually add this character to your priority queue because it will not be included as part of the frequency array.
+
+
+            </p>
+            <p>The output listed above does not include the pseudo-eof character. When you include the pseudo-eof character with a frequency of 1, the output becomes:
+
+
+            </p>
+            <p>The java.util package includes a PriorityQueue&lt;E&gt; class that implements the Queue&lt;E&gt; interface. You must use these to build your Huffman tree. You can read the Java api description of them, but basically, they work like the Queue&lt;E&gt; interface we have seen before except for the fact that the enqueue method is called offer and the dequeue method is called remove. The interface includes the isEmpty and size methods we are used to having. The only difference between a priority queue and a standard queue is that it uses the natural ordering of the objects to decide which object to dequeue first, with objects considered less returned first. You are going to be putting subtrees into your priority queue, which means you?ll be adding values of type HuffmanNode. This means that your HuffmanNode class will have to implement the Comparable&lt;E&gt; interface. It should use the frequency of the subtree to determine its ordering relative to other subtrees, with lower frequencies considered less than higher frequencies. If two frequencies are equal, the nodes should be considered equal.</p>
+
+            <p>The Queue&lt;E&gt; interface in the java.util package is incompatible with the one we used earlier in the quarter, so be sure not to include the Queue.java and Queue.class files from the earlier assignment in the same directory as your Huffman solution.</p>
+            <p>The Huffman solution is not unique. You can obtain any one of several different equivalent trees depending upon how certain decisions are made. But if you implement it as we have specified, then you should get exactly the same tree. Make sure that you use the built-in PriorityQueue class and that when you are combining pairs of values taken from the priority queue, you make the first value removed from the queue the left subtree and you make the second value removed the right subtree.</p>
+
+            <p>You are being given two data files for this assignment called <a href="/repository/hw/hw7/short.text">short.text</a> and <a href="/repository/hw/hw7/hamlet.text">hamlet.text</a>. The file short.txt is a short input file suitable for preliminary testing. The file hamlet.txt contains the full text of Shakespeare?s play Hamlet.</p>
+            <p>In terms of correctness, your class must provide all of the functionality described above. In terms of style, we will be grading on your use of comments, good variable names, consistent indentation and good coding style to implement these operations. Remember that you will lose points if you declare variables as data fields that can instead be declared as local variables. You should also avoid extraneous cases (e.g., don?t make something into a special case if it doesn?t have to be).</p>
+
+            <p>One java file needed for this part of the assignment is given: <a href="/repository/hw/hw7/MakeCode.java">MakeCode.java</a>. You will need to have MakeCode.java in the same directory as your files in order to run MakeCode. If your program runs correctly, you will get for the two text files that are given to you the following codes: <a href="/repository/hw/hw7/short.code">short.code</a> and
+                <a href="/repository/hw/hw7/hamlet.code"> hamlet.code</a>.
+
+
+            </p>
+            <p>Part 2: Encoding and Decoding a File</p>
+            <p>There are two new main programs that are used in this part of the assignment: <a href="/repository/hw/hw7/Encode.java">Encode.java</a> and <a href="/repository/hw/hw7/Decode.java">Decode.java</a>. You will also need <a href="/repository/hw/hw7/BitInputStream.java">BitInputStream.java</a>,
+                <a href="/repository/hw/hw7/BitOutputStream.java">BitOutputStream.java</a>. Recall that MakeCode.java examined an input file and produced a code file for compressing it. The program Encode.java uses this code and the original file to produce a binary file that is the compressed version of the original (Here is what you should get for the two text files that are given to you: <a href="/repository/hw/hw7/short.short">short.short</a> and <a href="/repository/hw/hw7/hamlet.short">hamlet.short</a>). The program Decode.java uses the code and the binary file from Encode to reconstruct the original file. Encode is a complete program that doesn?t need the Huffman tree. Decode depends on your HuffmanTree class to do most of the work.</p>
+
+            <p>When complete, your Decode program should be able to take one of the short files (short.short or hamlet.short) and the corresponding code file (short.code or hamlet.code) to reconstruct the original file. (Warning: different operating systems, particularly windows and OS X, have different ways of representing the breaks between lines in a text file. The sample encoded files were created on a windows machine, and, when decoded properly, will produce a text file with correct windows line breaks. If you look at the output file or run the program on OS X there may be slight differences &ndash; in particular the byte counts might not be the same &ndash; even if your program is working properly. You can check by running your code on a windows box.)</p>
+
+            <p>To complete your Decode program , you will have to add two new methods to your HuffmanTree class:
+            </p>
+            <table class="MsoNormalTable">
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>Method</p>
+                        </td>
+                        <td>
+                            <p>Description</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>HuffmanTree(Scanner input)</p>
+                        </td>
+                        <td width="397">
+                            <p>Constructs a Huffman tree from the Scanner. Assumes the Scanner contains a tree description in standard format.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>void decode(BitInputStream input, PrintStream output, int eof)</p>
+                        </td>
+                        <td width="397">
+                            <p>Reads bits from the given input stream and writes the corresponding characters to the output. Stops reading when it encounters a character with value equal to eof. This is a pseudo-eof character, so it should not be written to the output file. Assumes the input stream contains a legal encoding of characters for this tree?s Huffman code.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <p>The first of these methods is an alternative constructor. In part 1 you wrote a constructor that took an array of frequencies and constructed an appropriate tree given those frequencies. In this part you are given a Scanner that contains the file produced by your write method from part 1. In other words, the input for this part is the output you produced in part 1. You are using your own output to recreate the tree. For this second part, the frequencies are irrelevant because the tree has already been constructed once, but you are using the same node class as before. You can set all of the frequencies to some standard value like 0 or -1 for this part.
+
+
+    </p>
+    <p>Remember that the standard format was a series of pairs of lines where the first line has an integer representing the character?s ASCII value and the second line has the code to use for that character. You might be tempted to call nextInt() to read the integer and nextLine() to read the code, but remember that mixing token-based reading and line-based reading is not simple. Here is an alternative that uses a method called parseInt in the Integer class that allows you to use two successive calls on nextLine():
+
+
+    </p>
+    <p>int n = Integer.parseInt(input.nextLine());</p>
+    <p>String code = input.nextLine();</p>
+    <p>For the decoding part, you have to read a BitInputStream. This is a special class that is given. It works in conjunction with another class called BitOutputStream. They each have a very simple interface. They allow you to write and read compact sequences of bits.
+
+
+    </p>
+    <p>The only method you?ll use for BitInputStream is the following method which returns the next bit from the file:</p>
+    <p>public int readBit()</p>
+    <p>Your method is doing the reverse of the encoding process. It is reading sequences of bits that represent encoded characters and it is figuring out what the original characters must have been. Your method should start at the top of your tree and should read bits from the input stream, going left or right depending upon whether you get a 0 or 1 from the stream. When you hit a leaf node, you know you?ve found the end of an encoded sequence. At that point, you should write the integer code for that character to the output file. In doing so, call this method from the PrintStream class:
+
+
+    </p>
+    <p>public void write(int b)</p>
+    <p>You don?t need to cast to char. You just write the integer for this particular character (the value between 0 and 255 that is stored in this leaf). Once you&#39;ve written this character&#39;s integer, you go back to the top of your tree and start over, reading more bits and descending the tree until you hit a leaf again. At that point you write again, go back to the top of the tree, read more bits and descend until you hit a leaf, then write the leaf, go back to the top of the tree, and so on.
+
+
+    </p>
+    <p>Recognizing the end of the input will be tricky. Remember that we introduced a pseudo-eof character with a special value (256). The Encode method will write exactly one occurrence of this character at the end of the file. At some point your decoding method will come across this eof character. At that point it should stop decoding. It should not write this integer to the PrintStream because it isn&#39;t actually part of the original file. The eof value will be 256 for this particular program, but your code isn?t supposed to depend on this specific value, which is why it is passed to your decode method as the third parameter.
+
+
+    </p>
+    <p>If you fail to recognize the pseudo-eof character, you might end up accidentally reading past the end of the bit stream. When that happens, the readBit method returns a value of -1. So if you see a value of -1 appearing, it&#39;s because you?ve read too far in the bit stream.
+
+
+    </p>
+    <p>You will have to be careful if you use recursion in your decode method. Java has a limit on the stack depth you can use. For a file like hamlet.text, there are hundreds of thousands of characters to decode. That means it would not be appropriate to write code that requires a stack that is hundreds of thousands of levels deep. You might be forced to write some parts of this using a loop to make sure that you don&#39;t exceed the stack depth.
+
+
+    </p>
+    <p>Of course, if you do it all with a loop in your decode method, you can ignore the above warning.</p>
+    <p>In terms of correctness, your class must provide all of the functionality described above. In terms of style, we will be grading on your use of comments, good variable names, consistent indentation and good coding style to implement these operations. Remember that you will lose points if you declare variables as data fields that can instead be declared as local variables. You should also avoid extraneous cases (e.g., don?t make something into a special case if it doesn&#39;t have to be).
+
+
+    </p>
+    <p>You will have to turn in all of the java files that are in your project (even those that were given to you).</p>
+    <p>If you would like to read more about Huffman?s algorithm, there are many sources on the web including, for example, <a href="http://en.wikipedia.org/wiki/Huffman_tree">http://en.wikipedia.org/wiki/Huffman_tree</a></p>
+
+
+    <footer>
+        <small>
+                            &copy; 2015, All Rights Reserved ~ Seattle Central College ~
+                            <a href="http://validator.w3.org/check/referer" target="_blank">ValidHTML</a> ~
+                            <a href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">ValidCSS</a> ~ Authored by <a href="http://www.cjinseattle.com">Chris Mendoza</a> ~ <a href="disclaimer.html">Disclaimer</a>
+                        </small>
+    </footer>
+</body>
+
+</html>

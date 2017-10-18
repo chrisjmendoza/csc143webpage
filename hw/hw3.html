@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+    <head>
+        <title>CSC143 - HW1</title>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <link href="../css/style.css" type="text/css" rel=stylesheet />
+        <link href="../css/nav.css" type="text/css" rel="stylesheet" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="js/script.js"></script>
+    </head>
+
+    <body>
+
+        <header>
+            <a href="http://www.java.com/en/"><img id="logo" src="../images/iconjava.gif" alt="Java" title="Java Homepage" height="62"/></a>
+            <h1><a href="../index.html">CSC143 - Java II</a></h1>
+            <p class="header">Computer Programming for Engineers and Scientists</p>
+
+            <nav id='cssmenu'>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="active"><a href='#'>Class Resources</a>
+                        <ul>
+                            <li><a href="../calendar.html">Calendar</a></li>
+                            <li><a href="../classnotes.html">Class Notes</a></li>
+                            <li class="active"><a href="../hw.html">Homework</a>
+                                <ul>
+                                    <li><a href="hw1.html">Homework 1</a></li>
+                                    <li><a href="hw2.html">Homework 2</a></li>
+                                    <li class="active"><a href="hw3.html">Homework 3</a></li>
+                                    <li><a href="hw4.html">Homework 4</a></li>
+                                    <li><a href="hw5.html">Homework 5</a></li>
+                                    <li><a href="hw6.html">Homework 6</a></li>
+                                    <li><a href="hw7.html">Homework 7</a></li>
+                                    <li><a href="hw7ExtraCredit.html">Homework 7 - Extra Credit</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../programs.html">Programs</a></li>
+                            <li><a href="../syllabus.html">Syllabus</a></li>
+                        </ul>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../help.html">Help</a></li>
+                    <li><a href="../feedback.php">Feedback</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1>Homework 3 - 20 points</h1><h2><br>
+        The Plusses and Diamonds Fractals<br>
+        (Expanding the Model-View 
+        with a Controller) </h2>
+        <h2>Purpose</h2>Now it's time to make an interactive program, where 
+        the user can do something with your software.&nbsp; Your goal is to produce a 
+        program that displays the following fractals, shown below at different levels: 
+        <p><img height="125" src="hw3\pluses.gif" width="510"><br>
+            level 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            level 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            level 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            level 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            etc. 
+        <p><img src="hw3\diamonds.gif" width="528" height="146"><br>
+            &nbsp; 
+        <p>The level 0 pictures are the initial state of our 
+            program,&nbsp; just a simple plus sign or a simple diamond displayed. 
+        <p>To create the level 1 picture for the plus sign, 
+            4 more plus signs are added.&nbsp; Each plus sign is half the size of the original, 
+            and added to the 4 line ends of the first shape (the center of a new shape is 
+            placed at the end of each line of the first shape).&nbsp; To create level 2,&nbsp; 
+            just repeat the process:&nbsp; 12 more plus signs (since there are 12 line ends 
+            in level 1) each plus sign is half the size of the ones to be connected to. 
+        <p>To create the level 1 picture for the diamond, 4 
+            more diamonds of the complementary RGB color are added.&nbsp; The added diamonds 
+            are half the size of the original, and centered at the 4 vertices of the first 
+            diamond.&nbsp; The RGB complementary color is the color that you get when subtracting 
+            the amount of red, green and blue of the original color from 255. To create 
+            level 2,&nbsp; just repeat the process:&nbsp; 12 more diamonds, each diamond 
+            is half the size of the ones to be connected to and of the complementary RGB 
+            color (which is the color of the original diamond).
+        <p>When the program starts, the fractals are displayed 
+            in the initial state(level 0).&nbsp; Display at least one plus sign and one 
+            diamond. Make sure that they don't overlap. Apart from these requirements, you 
+            can pick whatever size, color, location you want (Of course, it is better to 
+            pick a size so that it is easy to see the subsequent levels.)&nbsp;&nbsp; For 
+            each mouse click on a shape, the level&nbsp; will increment or decrement by 
+            1 and the display is updated.&nbsp; There should be a reset button as well:&nbsp; 
+            when the user clicks on the button,&nbsp; the display goes back to the original 
+            state.&nbsp; Finally, the current level number should also be displayed and 
+            updated as the user works with the program (see the use of the TextViewer below).
+        <p>There will be a limit on the number of levels the 
+            user can display.&nbsp; If the size of the shapes to add is less than or equal 
+            to 1 pixel, don't add any shape. A dialog box should pop up telling the user 
+            that they have reached the maximum level. 
+        <p>A dialog box should also pop up if the user wants 
+            to decrease the level below 0.
+        <h3>Implementation</h3>Changes to the Shape interface and/or the AbstractShape class 
+        <br>
+        (though these changes are going to be used by the Plus and 
+        Diamond classes, they belong in the Shape interface or the AbstractShape class-- 
+        that inheritance thing again.) 
+        <p>Add 5 new instance variables to store Shape objects.&nbsp; 
+            These instance variables are to hold the objects to the North, South, East and 
+            West of <i>this shape, and the parent shape of this shape. The parent shape 
+            is the shape that was used to create this shape (i.e. to compute its location, 
+            size, and color). Note that the parent shape will also be one of the west, east, 
+            south and north shapes. All of these fields are null for an initial fractal. 
+            Add appropriate get/set methods.&nbsp; If a client passes null to a set method, 
+            that's ok.&nbsp;&nbsp; If the client passes in a shape that is not physically 
+            in the correct direction (e.g. does not have a center directly to the north 
+            of the current center, but wants to be the north shape), or that can't be a 
+            parent, throw an exception.&nbsp; It is ok if a get method returns null;&nbsp; 
+            this just means that there is no shape currently in that direction or that there 
+            is no parent shape.
+        <p>Add one method to add a level to a given shape. 
+            This method should add shapes only if the size of the shapes to add is greater 
+            than 1 pixel. Add another method to remove a level from a shape. If the shape 
+            is already at level 0, nothing should happen. You must use recursion for 
+            the coding of these methods.
+        <p>If you haven't done so in homework 2, provide a 
+            toString method for a shape. It should give the type of the shape (Plus or Diamond), 
+            the coordinates of the center of the shape, its current full size (note that 
+            it changes when levels are added or removed), its color(s) (a diamond may have 
+            two colors) and its current level. 
+        <p>You don't need to provide any clone method for a 
+            shape. If you have programmed a clone method for homework 2, you can remove 
+            the method.
+        <p>Add any other methods that you think are needed 
+            for your implementation.
+        <p>Changes to the Diamond and Plus classes 
+        <p>The major modification that you have to make should 
+            be to the draw method. Recursion will come very handy when rewriting this method.
+        <p>Changes to the Model 
+        <p>The model needs only to keep track of the shapes 
+            initially created since the shapes that are added when increasing the levels 
+            are stored within the initial shapes. Just add methods that allow the model 
+            to add or to remove a level to a shape. 
+        <p>There is also no need to return a deep copy of the 
+            list of shapes when sending a message to the model requiring the list of the 
+            shapes.
+        <h3>&nbsp;</h3><h3>Controller</h3>Build your controller class(es)&nbsp; to implement the user 
+        interface as described above.&nbsp;&nbsp; The controller should handle the mouse 
+        clicks of the user and send appropriate messages to the model (namely increase 
+        or decrease the level of the shape at the location of the click). We will say 
+        that a mouse click is on a shape if it is within its rectangular bounding box 
+        (with horizontal and vertical sides). Display two JRadioButtons (see the information 
+        about JRadioButton and ButtonGroup on the sun web site) to let the user choose 
+        between a level increase and a level decrease. You should have at least one public 
+        class that has controller functionality (Like the ButtonListener in the SimEvents 
+        example.&nbsp; Don't go overboard using anonymous inner classes.)&nbsp; For the 
+        dialog box,&nbsp; see the JOptionPane class.&nbsp; It has some useful static methods. 
+        <h3>A Text Viewer</h3>Create a new class that implements DrawingView which 
+        is all text based. It should print in the terminal window the information about 
+        the shapes as given by the toString method of a shape. This view should be refreshed 
+        only if the model changes. For example, a mouse click outside of any shape should 
+        not print again the list of the shapes. 
+        <h3>Class with the main method</h3>Here is where you put all the classes together Model, View, 
+        and Controller. This is the class that can also create the two radio buttons and 
+        the reset button. Use a JButton for the reset button. 
+        <p>Advice 
+        <ul>
+            <li>Make changes incrementally and test along they 
+                way.&nbsp; Also, draw pictures, do pseudocode design, draw UML diagrams, plan, 
+                plan, plan. 
+            <li>Keep a clean separation between the model, the 
+                view and the controller.&nbsp;</li><li>Make sure that you throw appropriate exceptions 
+            wherever needed.</li>
+            <li>Document all of the methods that you write (use 
+                javadoc conventions:, @param, @return, @throw, etc...)</li>
+        </ul>
+
+        <h3>Written Report</h3>
+        <ol>
+            <li>Planning and operation: What does your program 
+                do?&nbsp; Describe the major features.&nbsp; 
+                If you worked with a partner, how did you divide responsibilities? </li>
+            <li>Implementation:&nbsp; How is your program organized?&nbsp; 
+                What are the major classes?&nbsp; How do the objects interact? Draw an object diagram.</li>
+            <li>Give a clear explanation of the recursive algorithms 
+                to add a level to and remove a level from a shape.</li>
+            <li>Testing:&nbsp; How did you test your code?&nbsp; 
+                What sort of bugs did you encounter?&nbsp; What works and what doesn't?&nbsp; 
+                Are there any unresolved problems in the code? </li>
+            <li>Evaluate this project: What did you learn from 
+                it?&nbsp; Was it worth the effort?&nbsp; This could include things you learned 
+                about specifications and interfaces, design issues, Java language or library 
+                issues, debugging, etc. </li>
+        </ol>
+        
+        Good Luck and start early! 
+
+
+        <footer>
+            <small>
+                &copy; 2015, All Rights Reserved ~ Seattle Central College ~
+                <a href="http://validator.w3.org/check/referer" target="_blank">Valid&nbsp;HTML</a> ~
+                <a href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">Valid&nbsp;CSS</a> ~ Authored by <a href="http://www.cjinseattle.com">Chris Mendoza</a> ~ <a href="disclaimer.html">Disclaimer</a>
+            </small>
+        </footer>
+    </body>
+</html>

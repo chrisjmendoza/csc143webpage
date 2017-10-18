@@ -1,0 +1,572 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>CSC143 - HW1</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link href="../css/style.css" type="text/css" rel=stylesheet />
+    <link href="../css/nav.css" type="text/css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="http://www.java.com/en/"><img id="logo" src="../images/iconjava.gif" alt="Java" title="Java Homepage" height="62" /></a>
+        <h1><a href="../index.html">CSC143 - Java II</a></h1>
+        <p class="header">Computer Programming for Engineers and Scientists</p>
+
+        <nav id='cssmenu'>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li class="active"><a href='#'>Class Resources</a>
+                    <ul>
+                        <li><a href="../calendar.html">Calendar</a></li>
+                        <li><a href="../classnotes.html">Class Notes</a></li>
+                        <li class="active"><a href="../hw.html">Homework</a>
+                            <ul>
+                                <li><a href="hw1.html">Homework 1</a></li>
+                                <li><a href="hw2.html">Homework 2</a></li>
+                                <li><a href="hw3.html">Homework 3</a></li>
+                                <li><a href="hw4.html">Homework 4</a></li>
+                                <li><a href="hw5.html">Homework 5</a></li>
+                                <li class="active"><a href="hw6.html">Homework 6</a></li>
+                                <li><a href="hw7.html">Homework 7</a></li>
+                                <li><a href="hw7ExtraCredit.html">Homework 7 - Extra Credit</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../programs.html">Programs</a></li>
+                        <li><a href="../syllabus.html">Syllabus</a></li>
+                    </ul>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../help.html">Help</a></li>
+                    <li><a href="../feedback.php">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <p class="MsoNormal" style="TEXT-ALIGN: right" align="right">
+        &nbsp;
+    </p>
+    <p>CSC 143 - Homework #6</p>
+    <p>20 points</p>
+    <p>(taken from the UW)</p>
+    <p class="MsoNormal" style="TEXT-ALIGN: center" align="LEFT"></p>
+    <h3>Warm-up 
+(5 points): building a helper class LetterInventory</h3>
+    <p>In this part, you will practice using arrays and classes.&nbsp; You are to implement a class called <span class="SpellE">LetterInventory that can be used to keep track of an inventory of letters of the alphabet.&nbsp; The constructor for the class takes a String and computes how many of each letter
+            <span class="GramE">are in the String.&nbsp; This is the information the object keeps track of (how many <span class="SpellE">a?s, how many <span class="SpellE">b?s, etc).&nbsp; It ignores the case of the letters and ignores anything that is not an alphabetic character (e.g., it ignores punctuation characters, digits and anything else that is not a letter).
+        </p>
+        <p>&nbsp;</p>
+        <p>Your class should have 
+the following public methods.</p>
+        <p>&nbsp;</p>
+        <div align="center">
+            <table class="MsoTableGrid" cellspacing="0" cellpadding="0" border="1">
+                <tbody>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p>Method</p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Description</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p><span class="SpellE">LetterInventory(String data)</p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Construct an inventory 
+(a count) of the alphabetic letters in the given string, ignoring the case of 
+letters and ignoring any non-alphabetic characters.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p><span class="SpellE">int get(char letter)</p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Return a count of 
+how many of this letter are in the inventory.&nbsp; Letter might be lowercase 
+or uppercase (your method shouldn?t care).&nbsp; If a <span class="SpellE">nonalphabetic character is passed, your method should throw an <span class="SpellE">IllegalArgumentException.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p>void set(char letter, 
+<span class="SpellE">int value)
+                            </p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Set the count for 
+the given letter to the given value.&nbsp; Letter might be lowercase or uppercase.&nbsp; 
+If a <span class="SpellE">nonalphabetic character is passed or if value is negative, your method should throw an <span class="SpellE">IllegalArgumentException
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p><span class="SpellE">int size()</p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Return the sum of 
+all of the counts in this inventory.&nbsp; This operation should be ?fast? in 
+that it should store the size rather than having to compute it each time this 
+method is called.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p><span class="SpellE">boolean <span class="SpellE">isEmpty()
+                            </p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Return true if this 
+inventory is empty (all counts are 0).&nbsp; This operation should be fast in 
+that it should not need to examine each of the 26 counts when it is called.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p>String <span class="SpellE">toString()
+                            </p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Return a String 
+representation of the inventory with the letters all in lowercase and in sorted 
+order and surrounded by square brackets.&nbsp; The number of occurrences of each 
+letter should match its count in the inventory.&nbsp; For example, an inventory 
+of 4 <span class="SpellE">a?s, 1 b, 1 l and 1 m would be represented as ?[<span class="SpellE">aaaablm]?.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p><span class="SpellE">LetterInventory add(<span class="SpellE">LetterInventory other)
+                            </p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Construct and returns 
+a new <span class="SpellE">LetterInventory object that represents the sum of this letter inventory and the other given <span class="SpellE">LetterInventory.&nbsp; The counts for each letter should be added together.&nbsp; The two <span class="SpellE">LetterInventory objects being added together (this and other) should not be changed by this method
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Normal" valign="top" width="206">
+                            <p><span class="SpellE">LetterInventory subtract(<span class="SpellE">LetterInventory other)
+                            </p>
+                        </td>
+                        <td class="Normal" valign="top" width="420">
+                            <p>Construct and returns 
+a new <span class="SpellE">LetterInventory object that represents the result of subtracting the other inventory from this inventory (i.e., subtracting the counts in the other inventory from this object?s counts).&nbsp; If any resulting count would be negative, your method should return null.&nbsp; The two <span class="SpellE">LetterInventory objects being subtracted (this and other) should not be changed by this method
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>&nbsp;</p>
+        </div>
+        <p>You should implement this 
+class with an array of 26 counters (one for each letter) along with any other 
+data fields you find that you need.</p>
+        <p>&nbsp;</p>
+        <p>You will need to know 
+certain things about the properties of letters and type char.&nbsp; You might 
+want to look at the Character class for useful methods (e.g., there is a <span class="SpellE">toLowerCase method, but be sure to read the documentation carefully to be sure any methods you use do exactly what you need).&nbsp; You can compare different values of type char using less-than and greater-than tests.&nbsp; All of the lowercase letters appear grouped together in type char (?a? is followed by ?b? followed by ?c?, and so on) and all of the uppercase letters appear grouped together in type char (?A? followed by ?B? followed by ?C? and so on).&nbsp; Because of this, you can compute a letter?s displacement (or distance) from the letter ?a? with an expression like the following (this expression assumes the letter is a lowercase letter):
+        </p>
+        <p><span class="GramE"><span style="FONT-SIZE: 12pt">letter<span style="FONT-SIZE: 12pt"> - 'a'</p>
+        <p>&nbsp;</p>
+        <p>Going in the other direction, 
+if you know a character?s integer equivalent, you can cast the result to char 
+to get the character.&nbsp; For example, suppose that you want to get the letter 
+that is 8 away from ?a?.&nbsp; You could ask for:</p>
+        <p><span style="FONT-SIZE: 12pt">(<span class="GramE">char) <span class="GramE">('a' + 8)
+        </p>
+        <p>&nbsp;</p>
+        <p>This expression evaluates 
+to the letter ?<span class="SpellE">i?.
+        </p>
+        <p>&nbsp;</p>
+        <p>Use the following unit test 
+file (turn it in with your homework): <a href="hw6\LetterInventoryTest.java">LetterInventoryTest.java</a></p>
+        <p>&nbsp;</p>
+        <h3>Main 
+part: (15 points)</h3>
+        <p>This assignment will give you practice with recursive backtracking.&nbsp; 
+You are to create a class called AnagramSolver that uses a dictionary to find all combinations of words that have the same letters as a given phrase.&nbsp; 
+You might want to first look at the sample log of execution at the end of this handout.</p>
+        <p class="MsoNormal" style="MARGIN: 12pt 0in">Your class must include the following public methods.</p>
+        <div align="center">
+            <table class="MsoNormalTable">
+                <tbody>
+                    <tr>
+                            <p>Method</p>
+                        </td>
+                        <td>
+                            <p>Description</p>
+                        </td>
+                    </tr>
+                    <tr>
+                            <p>AnagramSolver(List&lt;String&gt; list)</p>
+                        </td>
+                        <td>
+                            <p class="MsoHeader" style="MARGIN: 3pt 0in; tab-stops: .5in center 3.0in right 6.0in">Construct an anagram solver that will use the given word list as its dictionary.&nbsp; 
+The list must not be modified.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: medium none; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 174.2pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" width="232">
+                            <p>void print(String s, int max)</p>
+                        </td>
+                        <td>
+                            <p>Print to System.out all combinations of words from its dictionary that are anagrams of the String s and that include at most max words (or unlimited number of words if max is 0).&nbsp; 
+Throw an IllegalArgumentException if max is less than 0.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>&nbsp;</p>
+        </div>
+        <p>Your print method must produce the anagrams in the same format as in the sample log.&nbsp; The easiest way to do this is to build up your answer a word at a time in an ArrayList or LinkedList.&nbsp; Then you can simply ?println? the list and it will have the appropriate format.</p>
+        <p>You are required to solve this problem by using recursive backtracking.&nbsp; 
+In particular, you must write a recursive method that builds up an answer one word at a time.&nbsp; On each recursive call, you must search the dictionary from beginning to end and to explore each word that is a match for the current set of letters.&nbsp; The possible solutions must be explored in dictionary order.&nbsp; For example, in deciding what word might come first, you must examine the words in the same order in which they appear in the dictionary.</p>
+        <p>The solution to the 8 queens problem provides a good example to follow for your own code.
+            &nbsp; The primary difference in the recursion is that in 8 queens, we stopped as soon as we found an answer, whereas in the anagrams program you should to produce all possible answers.</p>
+        <p>An important aspect of the 8 queens solution was the separation of the recursive code (Queens.java) from the supporting code that kept track of low-level details of the problem (Board.java).&nbsp; You must follow a similar strategy here.&nbsp; The low-level details for the anagram problem involve keeping track of various letters and figuring out when one group of letters can be formed from another group of letters.
+            &nbsp; It turns out that the LetterInventory class provides exactly the low-level support we need.</p>
+        <p>For any given word or phrase, what matters to us is how many of each letter there are.
+            &nbsp; This is exactly what the LetterInventory keeps track of.&nbsp; In addition, the ?subtract? method of the LetterInventory is the key to solving this problem.&nbsp; 
+For example, if you have a LetterInventory for the phrase ?george bush? and ask whether or not you can subtract the LetterInventory for ?bee?, the answer is yes.&nbsp; Every letter in the ?bee? inventory is also in the ?george bush? inventory.&nbsp; That means that you need to explore this possibility.&nbsp; Of course, the word ?bee? alone is not enough to account for all of the letters of ?george bush?, which is why you?d want to work with the new inventory formed by subtracting the letters from ?bee? as you continue the exploration.</p>
+        <p>Part of your grade will be based on the efficiency of your solution.&nbsp; 
+Recursive backtracking is, in general, highly inefficient because it is a brute force technique that checks every possibility, but there are still things you can do to make sure that your solution is as efficient as it can be.&nbsp; Be careful not to compute something twice if you don?t need to.&nbsp; And don?t continue to explore branches that you know will never be printed.&nbsp; And you are required to implement the following two optimizations:</p>
+        <ul>
+            <li class="MsoNormal" style="MARGIN-TOP: 12pt; tab-stops: list .5in; mso-list: l1 level1 lfo3">There is no reason to convert dictionary words into inventories more than once.&nbsp; You should ?preprocess? the dictionary in your constructor to compute all of the inventories in advance (once per word).&nbsp; 
+You?ll want fast access to these inventories as you explore the possible combinations.
+                &nbsp; A map will give you fast access.&nbsp; There is no need to keep the keys sorted. Use the more generic Map interface and its HashMap implementation.
+                <li class="MsoNormal" style="MARGIN-TOP: 12pt; tab-stops: list .5in; mso-list: l1 level1 lfo3">For any given phrase, you can reduce the dictionary by creating a smaller dictionary of ?relevant? words.&nbsp; A word is relevant if it can be subtracted from the given phrase.&nbsp; Only a fraction of the dictionary will, in general, be relevant to any given phrase.&nbsp; So reducing the dictionary before you begin the recursion will allow you to speed up the searches that happen on each recursive invocation.&nbsp; To implement this, you should construct a short dictionary for each phrase you are asked to explore that includes just the words relevant to that phrase.&nbsp; 
+You only have to do this once before the recursion begins, not on each recursive call. </li>
+            </li>
+        </ul>
+        <p>In terms of correctness, 
+your class must provide all of the functionality described above.&nbsp; In terms of style, we will be grading on your use of comments, good variable names, consistent indentation and good coding style to implement these operations.&nbsp; Remember that you will lose points if you declare variables as data fields that can instead be declared as local variables.&nbsp; 
+You should also be making correct use of generics and you should declare fields and variables using interfaces when possible (e.g., using List&lt;String&gt; for your variable even if the object is of type ArrayList&lt;String&gt;).&nbsp; You should also avoid extraneous cases (e.g., don?t make something into a special case if it doesn?t have to be) and should be careful to make your code as efficient as possible.
+            
+            
+        </p>
+        <p>The constructor for your 
+class is passed a reference to a dictionary stored as a List of String objects.&nbsp; 
+You can use this dictionary for your own object as long as you don?t change it (that is expressly forbidden in the specification).&nbsp; 
+In other words, you don?t need to make your own independent copy of the dictionary as long as you don?t modify the one that is passed to you in the constructor.
+            
+            
+        </p>
+        <p>Some people try to use 
+their Map in place of their dictionary.&nbsp; 
+There is some space efficiency to this in that the Map will store all of the dictionary words as keys of the Map.&nbsp; 
+But this isn?t really an appropriate use of the Map.&nbsp; The dictionary might have a different order than what the Map uses and you are required to explore the possibilities in dictionary order.
+            
+            
+        </p>
+        <p>Don?t make this problem 
+harder than it needs to be.&nbsp; You are doing a fairly exhaustive search of the possibilities.&nbsp; You have to avoid dead ends and you have to implement the optimizations listed above, but otherwise you are exploring every possibility.
+            &nbsp; For example, in the sample log you will see that one solution for ?Barbara Bush? is [abash, bar, rub].&nbsp; 
+Because this is found as a solution, you know that every other permutation of these words will also be included ([abash, rub, bar], [bar, abash, rub], [bar, rub, abash], and so on).&nbsp; But you don?t have to write any special code to make that work.&nbsp; 
+That is a natural result of the exhaustive nature of the search.&nbsp; It will locate each of these possibilities and print them out when they are found.&nbsp; Similarly, you don?t need any special cases for words that have already been used.&nbsp; If someone asks you for the anagrams of ?bar bar bar?, you should include [bar, bar, bar].
+            
+            
+        </p>
+        <p>You should 
+name your file AnagramSolver.java. To run your program use this class: <a href="hw6\AnagramMain.java">AnagramMain.java</a> 
+(turn it in with your other files). Four dictionary files are also provided. They are called <a href="hw6\dict1.txt">dict1.txt</a> (short dictionary of 56 words that has lots of matches for the Bush family?appropriate for testing), <a href="hw6\dict2.txt">dict2.txt</a> (medium sized dictionary of approximately 4 thousand words), <a href="hw6\dict3.txt">dict3.txt</a> (large dictionary of approximately 20 thousand words) and <a href="hw6\dict4.txt">dict4.txt</a> (large dictionary in a different order).&nbsp; </p>
+        <p>You will see that AnagramMain has two public fields a PrintStream out and a Scanner console. They are meant for testing the program with the JUnit test file (see below). In your file AnagramSolver, use AnagramMain.out.print(ln) in place of any System.out.print(ln) statement. To test your program use the file <a href="hw6\AnagramTest.java">AnagramTest.java</a> (turn it in with your other files), and the text files <a href="hw6\testWithdict1.txt">testWithdict1.txt</a>, <a href="hw6\testWithdict2.txt">testWithdict2.txt</a>, <a href="hw6\testWithdict3.txt">testWithdict3.txt</a>, and <a href="hw6\testWithdict4.txt">testWithdict4.txt</a>.</p>
+        <p>If you are interested in working with even larger dictionaries, check out the files available for download from the following site:</p>
+        <p class="MsoNormal" style="MARGIN-TOP: 12pt; TEXT-ALIGN: center" align="center"><a href="http://www.puzzlers.org/dokuwiki/doku.php?id=solving:wordlists:start">http://www.puzzlers.org/dokuwiki/doku.php?id=solving:wordlists:start</a></p>
+        <p>Your program must produce exactly the same output in exactly the same order as in the sample logs of execution.</p>
+        <p><span style="FONT-SIZE: 18pt; mso-bidi-font-size: 10.0pt">Code Style</p>
+        <p>Use iterators and/or Java 5?s for each statement (<span style="FONT-SIZE: 10pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-family: 'Times New Roman'">for 
+(variable <span style="FONT-SIZE: 10pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-family: 'Times New Roman'">:
+            collection<span style="FONT-SIZE: 10pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-family: 'Times New Roman'">) ?) where appropriate instead of indexed for-loops and the <span style="FONT-SIZE: 10pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-family: 'Times New Roman'">get(i)&nbsp; method.&nbsp; Recall that, as a matter of style, we want to use more general interface types like List instead of specific implementations like ArrayList for variables and parameters unless we have some reason to restrict ourselves to a particular implementation.&nbsp; For a general collection type like List, iterators, which are also used by the for each statement, are guaranteed to give efficient O(1) access to successive elements, even for implementations like linked lists that do not implement direct, indexed access to elements in constant time.</p>
+        <p>Although it turns out that the word lists in the main program for this assignment and, probably, the ones in your code will be implemented by an ArrayList instead of a LinkedList or other collection, it is better practice to use iterators and/or for each loops, particularly when a parameter or variable is an interface type like List that might, or might not, support efficient indexed access.&nbsp; </p>
+        <p><span style="FONT-SIZE: 18pt; mso-bidi-font-size: 10.0pt">Sample execution (short file)</p>
+        <p>Welcome to the csc143 anagram 
+solver.</p>
+        <p>&nbsp;</p>
+        <p>What is the name of the dictionary 
+file? dict1.txt</p>
+        <p>&nbsp;</p>
+        <p>phrase to scramble (return 
+to quit)? Barbara Bush</p>
+        <p>Max 
+words to include (0 for no max)? 0</p>
+        <p>[abash, bar, rub]</p>
+        <p>[abash, rub, bar]</p>
+        <p>[bar, abash, rub]</p>
+        <p>[bar, rub, abash]</p>
+        <p>[rub, abash, bar]</p>
+        <p>[rub, bar, abash]</p>
+        <p>&nbsp;</p>
+        <p>phrase to scramble (return 
+to quit)? George BUSH</p>
+        <p>Max 
+words to include (0 for no max)? 0</p>
+        <p>[bee, go, shrug]</p>
+        <p>[bee, shrug, go]</p>
+        <p>[bog, he, surge]</p>
+        <p>[bog, surge, he]</p>
+        <p>[bogus, erg, he]</p>
+        <p>[bogus, he, erg]</p>
+        <p>[bug, erg, hose]</p>
+        <p>[bug, goes, her]</p>
+        <p>[bug, her, goes]</p>
+        <p>[bug, hose, erg]</p>
+        <p>[bugs, ego, her]</p>
+        <p>[bugs, go, here]</p>
+        <p>[bugs, her, ego]</p>
+        <p>[bugs, here, go]</p>
+        <p>[bus, erg, go, he]</p>
+        <p>[bus, erg, he, go]</p>
+        <p>[bus, go, erg, he]</p>
+        <p>[bus, go, he, erg]</p>
+        <p>[bus, gorge, he]</p>
+        <p>[bus, he, erg, go]</p>
+        <p>[bus, he, go, erg]</p>
+        <p>[bus, he, gorge]</p>
+        <p>[egg, hose, rub]</p>
+        <p>[egg, rub, hose]</p>
+        <p>[ego, bugs, her]</p>
+        <p>[ego, grub, she]</p>
+        <p>[ego, her, bugs]</p>
+        <p>[ego, she, grub]</p>
+        <p>[erg, bogus, he]</p>
+        <p>[erg, bug, hose]</p>
+        <p>[erg, bus, go, he]</p>
+        <p>[erg, bus, he, go]</p>
+        <p>[erg, go, bus, he]</p>
+        <p>[erg, go, he, bus]</p>
+        <p>[erg, go, he, sub]</p>
+        <p>[erg, go, sub, he]</p>
+        <p>[erg, goes, hub]</p>
+        <p>[erg, he, bogus]</p>
+        <p>[erg, he, bus, go]</p>
+        <p>[erg, he, go, bus]</p>
+        <p>[erg, he, go, sub]</p>
+        <p>[erg, he, sub, go]</p>
+        <p>[erg, hose, bug]</p>
+        <p>[erg, hub, goes]</p>
+        <p>[erg, sub, go, he]</p>
+        <p>[erg, sub, he, go]</p>
+        <p>[go, bee, shrug]</p>
+        <p>[go, bugs, here]</p>
+        <p>[go, bus, erg, he]</p>
+        <p>[go, bus, he, erg]</p>
+        <p>[go, erg, bus, he]</p>
+        <p>[go, erg, he, bus]</p>
+        <p>[go, erg, he, sub]</p>
+        <p>[go, erg, sub, he]</p>
+        <p>[go, he, bus, erg]</p>
+        <p>[go, he, erg, bus]</p>
+        <p>[go, he, erg, sub]</p>
+        <p>[go, he, sub, erg]</p>
+        <p>[go, here, bugs]</p>
+        <p>[go, shrug, bee]</p>
+        <p>[go, sub, erg, he]</p>
+        <p>[go, sub, he, erg]</p>
+        <p>[goes, bug, her]</p>
+        <p>[goes, erg, hub]</p>
+        <p>[goes, grub, he]</p>
+        <p>[goes, he, grub]</p>
+        <p>[goes, her, bug]</p>
+        <p>[goes, hub, erg]</p>
+        <p>[gorge, bus, he]</p>
+        <p>[gorge, he, bus]</p>
+        <p>[gorge, he, sub]</p>
+        <p>[gorge, sub, he]</p>
+        <p>[grub, ego, she]</p>
+        <p>[grub, goes, he]</p>
+        <p>[grub, he, goes]</p>
+        <p>[grub, she, ego]</p>
+        <p>[he, bog, surge]</p>
+        <p>[he, bogus, erg]</p>
+        <p>[he, bus, erg, go]</p>
+        <p>[he, bus, go, erg]</p>
+        <p>[he, bus, gorge]</p>
+        <p>[he, erg, bogus]</p>
+        <p>[he, erg, bus, go]</p>
+        <p>[he, erg, go, bus]</p>
+        <p>[he, erg, go, sub]</p>
+        <p>[he, erg, sub, go]</p>
+        <p>[he, go, bus, erg]</p>
+        <p>[he, go, erg, bus]</p>
+        <p>[he, go, erg, sub]</p>
+        <p>[he, go, sub, erg]</p>
+        <p>[he, goes, grub]</p>
+        <p>[he, gorge, bus]</p>
+        <p>[he, gorge, sub]</p>
+        <p>[he, grub, goes]</p>
+        <p>[he, sub, erg, go]</p>
+        <p>[he, sub, go, erg]</p>
+        <p>[he, sub, gorge]</p>
+        <p>[he, surge, bog]</p>
+        <p>[her, bug, goes]</p>
+        <p>[her, bugs, ego]</p>
+        <p>[her, ego, bugs]</p>
+        <p>[her, goes, bug]</p>
+        <p>[here, bugs, go]</p>
+        <p>[here, go, bugs]</p>
+        <p>[hose, bug, erg]</p>
+        <p>[hose, egg, rub]</p>
+        <p>[hose, erg, bug]</p>
+        <p>[hose, rub, egg]</p>
+        <p>[hub, erg, goes]</p>
+        <p>[hub, goes, erg]</p>
+        <p>[rub, egg, hose]</p>
+        <p>[rub, hose, egg]</p>
+        <p>[she, ego, grub]</p>
+        <p>[she, grub, ego]</p>
+        <p>[shrug, bee, go]</p>
+        <p>[shrug, go, bee]</p>
+        <p>[sub, erg, go, he]</p>
+        <p>[sub, erg, he, go]</p>
+        <p>[sub, go, erg, he]</p>
+        <p>[sub, go, he, erg]</p>
+        <p>[sub, gorge, he]</p>
+        <p>[sub, he, erg, go]</p>
+        <p>[sub, he, go, erg]</p>
+        <p>[sub, he, gorge]</p>
+        <p>[surge, bog, he]</p>
+        <p>[surge, he, bog]</p>
+        <p>&nbsp;</p>
+        <p>phrase to scramble (return 
+to quit)? George Bush</p>
+        <p>Max 
+words to include (0 for no max)? 2</p>
+        <p>&nbsp;</p>
+        <p>phrase to scramble (return 
+to quit)? GeOrGe</p>
+        <p>Max 
+words to include (0 for no max)? 2</p>
+        <p>[ego, erg]</p>
+        <p>[erg, ego]</p>
+        <p>&nbsp;</p>
+        <p>phrase to scramble (return 
+to quit)? GEORGES</p>
+        <p>Max 
+words to include (0 for no max)? 2</p>
+        <p>[erg, goes]</p>
+        <p>[goes, erg]</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)?</p>
+        <p><span style="FONT-SIZE: 18pt; mso-bidi-font-size: 10.0pt">Sample execution (long file)</p>
+        <p>Welcome 
+to the csc143 anagram solver.</p>
+        <p>&nbsp;</p>
+        <p>What 
+is the name of the dictionary file? dict3.txt</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)? Howard Dean</p>
+        <p>Max 
+words to include (0 for no max)? 2</p>
+        <p>[ahead, 
+drown]</p>
+        <p>[don, 
+warhead]</p>
+        <p>[drown, 
+ahead]</p>
+        <p>[hadron, 
+wade]</p>
+        <p>[head, 
+onward]</p>
+        <p>[nod, 
+warhead]</p>
+        <p>[onward, 
+head]</p>
+        <p>[wade, 
+hadron]</p>
+        <p>[warhead, don]</p>
+        <p>[warhead, nod]</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)? Wesley Clark</p>
+        <p>Max 
+words to include (0 for no max)? 2</p>
+        <p>[creaky, 
+swell]</p>
+        <p>[seller, 
+wacky]</p>
+        <p>[swell, 
+creaky]</p>
+        <p>[wacky, 
+seller]</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)?</p>
+        <p><span style="FONT-SIZE: 18pt; mso-bidi-font-size: 10.0pt">Sample execution (dict4 file)</p>
+        <p>Welcome 
+to the csc143 anagram solver.</p>
+        <p>&nbsp;</p>
+        <p>What 
+is the name of the dictionary file? dict4.txt</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)? hugo chavez</p>
+        <p>Max 
+words to include (0 for no max)? 0</p>
+        <p>[huh, 
+zag, cove]</p>
+        <p>[huh, 
+cove, zag]</p>
+        <p>[zag, 
+huh, cove]</p>
+        <p>[zag, 
+cove, huh]</p>
+        <p>[cove, 
+huh, zag]</p>
+        <p>[cove, 
+zag, huh]</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)? howard dean</p>
+        <p>Max 
+words to include (0 for no max)? 2</p>
+        <p>[don, 
+warhead]</p>
+        <p>[nod, 
+warhead]</p>
+        <p>[head, 
+onward]</p>
+        <p>[wade, 
+hadron]</p>
+        <p>[ahead, 
+drown]</p>
+        <p>[drown, 
+ahead]</p>
+        <p>[hadron, 
+wade]</p>
+        <p>[onward, 
+head]</p>
+        <p>[warhead, don]</p>
+        <p>[warhead, nod]</p>
+        <p>&nbsp;</p>
+        <p>phrase 
+to scramble (return to quit)?</p>
+    </div>
+
+    <footer>
+        <small>
+                &copy; 2015, All Rights Reserved ~ Seattle Central College ~
+                <a href="http://validator.w3.org/check/referer" target="_blank">Valid&nbsp;HTML</a> ~
+                <a href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">Valid&nbsp;CSS</a> ~ Authored by <a href="http://www.cjinseattle.com">Chris Mendoza</a> ~ <a href="disclaimer.html">Disclaimer</a>
+            </small>
+    </footer>
+</body>
+
+</html>

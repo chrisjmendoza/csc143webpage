@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>CSC143 - HW1</title>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <link href="../css/style.css" type="text/css" rel=stylesheet />
+        <link href="../css/nav.css" type="text/css" rel="stylesheet" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="js/script.js"></script>
+    </head>
+
+    <body>
+
+        <header>
+            <a href="http://www.java.com/en/"><img id="logo" src="../images/iconjava.gif" alt="Java" title="Java Homepage" height="62" />
+            </a>
+            <h1><a href="../index.html">CSC143 - Java II</a></h1>
+            <p class="header">Computer Programming for Engineers and Scientists</p>
+
+            <nav id='cssmenu'>
+                <ul>
+                    <li><a href="../index.html">Home</a>
+                    </li>
+                    <li class="active"><a href='#'>Class Resources</a>
+                        <ul>
+                            <li><a href="../calendar.html">Calendar</a>
+                            </li>
+                            <li><a href="../classnotes.html">Class Notes</a>
+                            </li>
+                            <li class="active"><a href="../hw.html">Homework</a>
+                                <ul>
+                                    <li><a href="hw1.html">Homework 1</a>
+                                    </li>
+                                    <li class="active"><a href="hw2.html">Homework 2</a>
+                                    </li>
+                                    <li><a href="hw3.html">Homework 3</a>
+                                    </li>
+                                    <li><a href="hw4.html">Homework 4</a>
+                                    </li>
+                                    <li><a href="hw5.html">Homework 5</a>
+                                    </li>
+                                    <li><a href="hw6.html">Homework 6</a>
+                                    </li>
+                                    <li><a href="hw7.html">Homework 7</a>
+                                    </li>
+                                    <li><a href="hw7ExtraCredit.html">Homework 7 - Extra Credit</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="../programs.html">Programs</a>
+                            </li>
+                            <li><a href="../syllabus.html">Syllabus</a>
+                            </li>
+                        </ul>
+                    <li><a href="../resources.html">Resources</a>
+                    </li>
+                    <li><a href="../help.html">Help</a>
+                    </li>
+                    <li><a href="../feedback.php">Feedback</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <h2>Homework 2</h2>
+        <h2>(15 points)</h2>
+
+        <hr>
+
+        <h3>Purpose</h3>
+        <p>This assignment is a chance to learn a bit about the Java Swing package, and explore some of the design issues involved in structuring programs around models and views. It is also a chance to gain some experience designing classes and figuring out how to distribute code in a class hierarchy. In this assignment, you'll construct the model and view part of a graphics drawing program. Next time, we'll extend the program to add a controller.</p>
+
+
+        <p>There is no starter code this time, but you'll find several useful examples posted on the class calendar and in Lab #3.</p>
+
+        <p>The goal is that when the program runs, a frame will be displayed with a number of shapes drawn on it. (See the shapes below).</p>
+
+
+        <h3>Class Organization</h3>
+        <p>Organize your code using a model-view pattern similar to the one used in the BallSim demo. The main difference is that you must include an abstract class to represent generic shapes, and create specific shapes by extending that class. The abstract class gives you a place to put code that is common to all shapes, without having to duplicate it in each specific class.</p>
+
+        <p>Your code should be organized using the following classes and interfaces:</p>
+
+        <ul>
+            <li>Interface Shape. The minimal interface of a shape. This should include, at least, a method to draw the Shape on a java Graphics object. As the program evolves, you may need to add additional methods to this interface, but keep it as small as possible for now. (At this point, there should not be any code to handle events. Event handling will be included in the next installment of this assignment.)</li>
+            <li>Class AbstractShape. This should be an <i>abstract class that implements interface Shape. Add instance variables, additional methods and default implementations here once it becomes clear that all Shapes need to have such fields.
+            </li>
+            <li>Specific concrete shape classes that extend AbstractShape. You must provide classes for the following 2 shapes: the filled-in diamond<img class="hw" src="../repository/hw/hw2/diamond.gif">and the plus<img class="hw" src="../repository/hw/hw2/plus.gif" >. The height and width dimension of the diamond are the same; same for the plus shape. Constructors should allow the client to specify the (x,y) position of the center of the new object, its color and its size. You can add other attributes in the constructor if you'd like. The two classes should also have a method that returns a deep copy of its calling object (this is so that the model can return a deep copy of its lists of shapes. See below). Do so by implementing the Cloneable interface and override the Object clone method, or by writing your own method (such as public Shape copy() whose declaration could be written in the Shape interface). Just make sure that the copy is a deep copy.
+                <br>
+                <br> You can also choose to make some other classes if you like, such as squares, circles, triangles, composite shapes, etc.
+            </li>
+        </ul>
+
+        <ul>
+            <li>Class DrawingModel. This is the model that holds the state of the drawing, and will probably be the most complex class. It should maintain a collection of Shapes and make a deep copy of the collection available when requested ( use the clone implementations of the Diamond and Plus classes). Other behaviors it should support are
+
+                <ul>
+                    <li>A client should be able to add a Shape to the model</li>
+
+                    <li>A viewer should be able to register with the model</li>
+
+                    <li>It should notify all viewers when something in the model changes. (For now, the only changes will be when a new shape is added to the drawing.)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <hr>
+        
+        <ul>
+            <li>Interface DrawingView. This interface should describe the minimal information about a viewer needed for the DrawingModel to interact with it (probably just a notify method).</li>
+
+            <li>A viewer class that extends JPanel and implements DrawingView. When notified of changes in the DrawingModel, it should draw all shapes from the model within the panel.
+            </li>
+        </ul>
+        
+    <hr>
+        
+    <ul>
+        <li>MainClass program. Create a class with a main method that creates the DrawingModel and Viewer and sets them up so that the state of the DrawingModel is displayed within a JFrame. Create some random diamonds and plusses (and any other shapes you have) with different colors, sizes, and locations and have them displayed to the user (by adding them to the model).
+        </li>
+    </ul>
+        
+    <h4>Don't forget...</h4>
+    <p>Make sure you have documented your public interfaces well. Remember, you are building these classes from scratch. No one has any idea of what they do except you. You need to communicate these ideas to the reader.</p>
+        
+    <h4>Written Report (5 points):</h4>
+        <p>You must turn in a short typed report that discusses your program, describes the class design, and discusses issues you encountered while working on it. Your report should cover:</p>
+
+    <ol>
+        <li>Planning: How did you plan and organize your program? What does it do?</li>
+
+        <li>Implementation: How is your program organized? What are the major classes? How do the objects interact? Draw a diagram.</li>
+
+        <li>Testing: How did you test your code? What sort of bugs did you encounter? Are there any unresolved problems in the code?</li>
+
+        <li>Evaluate this project. What did you learn from it? Was it worth the effort? This could include things you learned about specifications and interfaces, design issues, Java language issues, debugging, etc.
+        </li>
+</ol>
+<div class="footer">
+</div>
+
+<footer>
+    <small>
+        &copy; 2015, All Rights Reserved ~ Seattle Central College ~
+        <a href="http://validator.w3.org/check/referer" target="_blank">ValidHTML</a> ~
+        <a href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">ValidCSS</a> ~ Authored by <a href="http://www.cjinseattle.com">Chris Mendoza</a> ~ <a href="disclaimer.html">Disclaimer</a>
+    </small>
+</footer>
+</body>
+
+</html>

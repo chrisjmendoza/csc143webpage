@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0090)http://northstar.sccd.ctc.edu/csc/courses/csc143/Spring2003/csc143-04-08/homeworks/a7.html -->
+<HTML>
+<!-- Mirrored from seattlecentral.edu/faculty/flepeint/java143/ClassExamples/TreeExample.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2015 00:09:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD><TITLE>CSC 143 HomeWork #7</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content=testuser name=Author>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY bgcolor="#FFFFFF">
+<CENTER>
+  </CENTER><P>A tree structure is shown below where each node has a reference to 
+its parent, a reference to its first child&nbsp; and a reference to its right 
+sibling. 
+<P>class Node { <BR>&nbsp;&nbsp;&nbsp; Object item; <BR>&nbsp;&nbsp;&nbsp; Node 
+parent, firstChild, rightSib; <BR>} 
+<BLOCKQUOTE>a)Write a method that returns the next node at the same level 
+  on the right.&nbsp; If you use any helper methods, you must provide their 
+  implemetation as well. <BR>b) What is the complexity of your 
+  method?&nbsp; Explain how you computed it.</BLOCKQUOTE>The signature of the 
+method is: 
+<P>Node GetNextLevelSibling(Node p); 
+<P>Examples: 
+<BLOCKQUOTE>GetNextLevelSibling(f) -&gt; g <BR>GetNextLevelSibling(k) -&gt; l 
+  <BR>GetNextLevelSibling(h) -&gt; i <BR>GetNextLevelSibling(d) -&gt; 
+null</BLOCKQUOTE><TABLE cols=2 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD><IMG height=256 src="tree1.gif" width=384> 
+      <CENTER>Traditional Diagram of a Tree</CENTER></TD><TD><IMG height=253 src="tree2.gif" width=481> 
+      <CENTER>
+      <P>Actual Diagram of Tree for Question #1 showing all 
+      references</P></CENTER></TD></TR></TBODY></TABLE><P>
+</BODY>
+<!-- Mirrored from seattlecentral.edu/faculty/flepeint/java143/ClassExamples/TreeExample.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2015 00:09:40 GMT -->
+</HTML>

@@ -1,0 +1,171 @@
+/* CALENDAR TABLE GENERAL STYLING */
+
+body {
+    width: 98%;
+    max-width: 1280px;
+}
+table.calendar {
+    width: 98%;
+    border-collapse: collapse;
+    font-size: .75em; /* font was made smaller so the calendar would fit on screen, otherwise, it doesn't shrink down properly. */
+}
+
+/* Style the h3 header above the dropdown menu */
+.weekselect {
+    margin: 0 2%;
+}
+
+/* Style the week menu selector */
+select {
+    background: transparent;
+    margin:0 0 0 5%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.25em;
+    border-radius: 10px;
+    border: 1px solid black;
+    -moz-appearance: none; 
+}
+
+/* Give the dates a purple color and slightly larger size for readability */
+table.calendar p.date {
+    color: #663399;
+    font-size: 1.2em;
+    font-weight: bolder;
+    margin:0;
+}
+
+/* Define the size of the cells of the calendar to resize and give a border */
+table.calendar td,th {
+    width: 17%;
+    text-align: center;
+    border: 4px ridge grey;
+}
+
+/* Style every other column */
+table.calendar td:nth-child(odd) {
+
+}
+
+/* Color every other column grey */
+table.calendar th:nth-child(odd) {
+
+}
+
+/* Make the days of the week bigger for readability */
+table.calendar tr:first-child {
+    font-size: 1.5em;
+}
+
+/* Center the words and make them a little larger for readability */
+table.calendar td:first-child {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+table.calendar th {
+    font-size: 1.5em;
+}
+/* Make the "to the top" link a little smaller for styling */
+table.calendar th a {
+    font-size: .7em;
+}
+
+table.calendar th.goodbye {
+    font-size: 2em;
+    color: red;
+    background-color: #fff;
+    border:none;
+}
+
+/* DESKTOP/TABLET STYLING FOR CALENDAR TO COLLAPSE */
+@media all and (min-width: 641px) and (max-width: 950px) {
+
+
+    table.calendar {
+        width:98%;
+        font-size: 1em;
+    }
+
+    table.calendar tr {
+        border:1px solid grey;
+        padding:0;
+        margin:0 auto;
+        margin-bottom: 10px;
+        width: 95%;
+        text-align: center;
+    }
+
+    table.calendar td, th {
+        width: 100%;
+        border:1px solid grey;
+        padding: 10px 0;
+    }
+
+    /* Color every other column grey */
+    table.calendar th:nth-child(odd) {
+        background-color: #ccc;
+    }
+
+
+    table.calendar th.goodbye {
+    font-size: 2em;
+    color: red;
+    background-color: #fff;
+    border:none;
+}
+
+    table.calendar tr.days {
+        display: none;
+    }
+
+    table.calendar td:first-child {
+        font-size: 1.2em;
+    }
+}
+
+/* Mobile Queries */
+@media all and (max-width: 640px) {
+
+    table.calendar {
+        width:95%;
+        font-size: 1em;
+    }
+
+    table.calendar tr {
+        border:1px solid grey;
+        padding:0;
+        margin:0 auto;
+        margin-bottom: 10px;
+        width: 95%;
+        text-align: center;
+    }
+
+    table.calendar td, th {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        border:1px solid grey;
+    }
+
+    /* Color every other column grey */
+    table.calendar th:nth-child(odd) {
+        background-color: #ccc;
+    }
+    
+    table.calendar th.goodbye {
+        background-color: white;
+        border: none;
+        font-size: 1.5em;
+    }
+
+
+    table.calendar tr.days {
+        display: none;
+    }
+
+    table.calendar tr, td:first-child {
+        font-size: 1em;
+    }
+}
+/* END OF CALENDAR TABLE STYLING */
+
